@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "stay-home-board"
+  "defaultProject": "stay-home-board",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
