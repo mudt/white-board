@@ -1,0 +1,11 @@
+<div class="Card" cdkDrag cdkDragBoundary=".Board_Boundary">
+  <ng-container *ngIf="editMode; else noEdit">
+    <textarea matInput
+      name="card" ([NgModel])="cardText"
+      (blur)="saveText()"
+       autofocus>{{ cardText }}</textarea>
+  </ng-container>
+  <ng-template #noEdit>
+    <div (click)="startEdit()">{{cardText}}</div>
+  </ng-template>
+</div>
