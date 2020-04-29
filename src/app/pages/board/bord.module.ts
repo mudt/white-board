@@ -4,17 +4,8 @@ import { BoardComponent } from './board/board.component';
 import { CardComponent } from './card/card.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 
-
-
 @NgModule({
-  declarations: [
-    BoardComponent,
-    CardComponent
-  ],
-  imports: [
-    CommonModule,
-    MaterialModule
-
-  ]
+  declarations: [BoardComponent, CardComponent],
+  imports: [CommonModule, MaterialModule],
 })
-export class BordModule { }
+export class BordModule {}

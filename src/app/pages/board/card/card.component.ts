@@ -3,16 +3,15 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
   editMode = false;
   cardText = 'Input Text';
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   startEdit() {
     this.editMode = true;
@@ -22,7 +21,5 @@ export class CardComponent implements OnInit {
     this.editMode = false;
   }
 
-  setText() {
-
-  }
+  setText() {}
 }

@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import * as fromAppStore from './index';
 
-
-
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    StoreModule.forFeature(fromAppStore.appStoreFeatureKey, fromAppStore.reducers, { metaReducers: fromAppStore.metaReducers })
-  ]
+    StoreModule.forFeature(
+      fromAppStore.appStoreFeatureKey,
+      fromAppStore.reducers,
+      { metaReducers: fromAppStore.metaReducers },
+    ),
+  ],
 })
-export class AppStoreModule { }
+export class AppStoreModule {}
