@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BoardService } from 'src/app/services/board.service';
+import { ICard } from 'src/app/models/card';
 
 @Component({
   selector: 'app-board',
@@ -6,23 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./board.component.scss'],
 })
 export class BoardComponent implements OnInit {
-  cardPotions = {
-    x: 0,
-    y: 0,
-  };
+  cards: ICard[] = [];
 
-  constructor() {}
+  constructor(private boardService: BoardService) {}
 
-  ngOnInit(): void {}
-
-  drop(e) {
-    console.log('drop', e);
-    this.cardPotions.x = e.clientX;
-    this.cardPotions.y = e.clientY;
-  }
-
-  dragOver(e) {
-    console.log('dragover', e);
-    e.preventDefault();
+  ngOnInit(): void {
+    this.cards = this.boardService.fetchCards();
   }
 }
