@@ -1,9 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {
-  CdkDragEnd,
-  CdkDragStart,
-  CdkDragRelease,
-} from '@angular/cdk/drag-drop';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { CdkDragEnd } from '@angular/cdk/drag-drop';
+import { ICard } from 'src/app/models/card';
+import { Validators, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-card',
@@ -11,31 +9,53 @@ import {
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
+  @Input() cardId: number;
   @Input() position = { x: 0, y: 0 };
   @Input() color: string = null;
   @Input() locked: boolean;
   @Input() text: string;
 
+  @Output() saveCard = new EventEmitter<ICard>();
+
+  card: ICard | null = null;
+
   editMode = false;
 
-  constructor() {}
-  // source: import('@angular/cdk/drag-drop').CdkDrag<any>;
+  cardForm: FormGroup;
 
-  ngOnInit(): void {}
+  constructor() {}
+
+  ngOnInit(): void {
+    this.card = {
+      id: this.cardId,
+      text: this.text,
+      position: this.position,
+      color: this.color,
+      lock: this.locked,
+    };
+
+    this.cardForm = new FormGroup({
+      text: new FormControl(this.card.text, Validators.required),
+    });
+  }
 
   startEdit() {
     this.editMode = true;
   }
 
   saveText() {
+    this.card = { ...this.card, ...this.cardForm.value };
     this.editMode = false;
+    this.saveCard.emit(this.card);
   }
-
-  setText() {}
 
   dragEnd(ev: CdkDragEnd) {
     const position = ev.source.getFreeDragPosition();
-    this.position.x = position.x;
-    this.position.y = position.y;
+    this.card = { ...this.card, position: { ...position } };
+    this.saveCard.emit(this.card);
+  }
+
+  get cardText() {
+    return this.cardForm.get('text');
   }
 }

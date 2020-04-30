@@ -1,6 +1,25 @@
 .Card {
-  width: 200px;
-  height: 200px;
-  border: 1px solid #666666;
-  cursor: move;
+  width: 150px;
+  height: 150px;
+  border: 1px solid #bbbbbb;
+  background-color: #ffffff;
+  padding: 8px;
+  color: #666666;
+
+  &_Header {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &-handle {
+    color: #ccc;
+    cursor: move;
+    width: 24px;
+    height: 24px;
+  }
+
+  textarea {
+    width: 100%;
+  }
 }
+

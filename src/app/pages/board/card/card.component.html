@@ -1,15 +1,21 @@
-<div class="Card" cdkDrag [cdkDragFreeDragPosition]="position" (cdkDragEnded)="dragEnd($event)" cdkDragBoundary=".Board_Boundary">
-  <ng-container *ngIf="editMode; else noEdit">
-    <textarea
-      matInput
-      name="card"
-      ([NgModel])="(text)"
-      (blur)="saveText()"
-      autofocus
-      >{{ text }}</textarea
-    >
-  </ng-container>
-  <ng-template #noEdit>
-    <div (click)="startEdit()">{{ text }}</div>
-  </ng-template>
-</div>
+<mat-card class="Card" cdkDrag [cdkDragFreeDragPosition]="card.position" (cdkDragEnded)="dragEnd($event)"
+  cdkDragBoundary=".Board_Boundary">
+  <mat-card-header class="Card_Header">
+    <div class="Card-handle" cdkDragHandle>
+      <fa-icon icon="arrows-alt"></fa-icon>
+    </div>
+  </mat-card-header>
+  <mat-card-content class="Card_Contents">
+    <ng-container *ngIf="editMode; else noEdit">
+      <form [formGroup]="cardForm">
+        <div matFormField appearance="fill">
+          <textarea id="text" matInput (blur)="saveText()" autofocus formControlName="text" required></textarea>
+          <mat-error *ngIf="cardText.errors?.required">内容は必須です</mat-error>
+        </div>
+      </form>
+    </ng-container>
+    <ng-template #noEdit>
+      <p (click)="startEdit()">{{ card.text }}</p>
+    </ng-template>
+  </mat-card-content>
+</mat-card>

@@ -1,3 +1,4 @@
 <div class="Board_Boundary">
-  <app-card *ngFor="let card of cards" [position]="card.position" [color]="card.color" [locked]="card.lock" [text]="card.text"></app-card>
+  <app-card *ngFor="let card of cards" [cardId]="card.id" [position]="card.position" [color]="card.color"
+    [locked]="card.lock" [text]="card.text" (saveCard)="updateCard($event)"></app-card>
 </div>

@@ -15,4 +15,13 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
     this.cards = this.boardService.fetchCards();
   }
+
+  updateCard(card: ICard) {
+    this.cards = this.cards.map((c) => {
+      if (c.id === card.id) {
+        return card;
+      }
+      return c;
+    });
+  }
 }
