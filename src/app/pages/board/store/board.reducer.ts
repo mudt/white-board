@@ -1,5 +1,6 @@
-import { Action, createReducer, on } from '@ngrx/store';
 import { ICard } from 'src/app/models/card';
+
+import { Action, createReducer, on } from '@ngrx/store';
 
 import * as BoardActions from './board.actions';
 
@@ -15,12 +16,21 @@ export const initialState: State = {
   cards: [],
 };
 
-export const reducer = createReducer(
+const boardReducer = createReducer(
   initialState,
-  on(BoardActions.loadBoards, (state) => ({ loading: true })),
-  on(BoardActions.loadBoardsSuccess, (state, payload) => ({
+  on(BoardActions.loadCards, (state) => ({ ...state, loading: true })),
+  on(BoardActions.loadCardsSuccess, (state, { cards }) => ({
+    ...state,
     loading: false,
-    cards: payload.cards,
+    cards: [...state.cards, ...cards],
   })),
-  on(BoardActions.loadBoardsFailure, (state) => ({ ...state, loading: false })),
+  on(BoardActions.loadCardsFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+  })),
 );
+
+export function reducer(state: State | undefined, action: Action) {
+  return boardReducer(state, action);
+}

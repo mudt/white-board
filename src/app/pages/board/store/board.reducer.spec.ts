@@ -1,4 +1,4 @@
-import { reducer, initialState } from './board.reducer';
+import { initialState, reducer } from './board.reducer';
 
 describe('Board Reducer', () => {
   describe('an unknown action', () => {

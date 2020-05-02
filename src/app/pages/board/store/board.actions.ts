@@ -1,14 +1,30 @@
-import { createAction, props } from '@ngrx/store';
 import { ICard } from 'src/app/models/card';
 
-export const loadBoards = createAction('[Board Page] Load Boards');
+import { createAction, props } from '@ngrx/store';
 
-export const loadBoardsSuccess = createAction(
+export const loadCards = createAction('[Board Page] Load Boards');
+
+export const loadCardsSuccess = createAction(
   '[Board Page] Load Boards Success',
   props<{ cards: ICard[] }>(),
 );
 
-export const loadBoardsFailure = createAction(
+export const loadCardsFailure = createAction(
   '[Board Page] Load Boards Failure',
+  props<{ error: any }>(),
+);
+
+export const createCard = createAction(
+  '[Board Page] Create Card',
+  props<{ card: Partial<ICard> }>(),
+);
+
+export const createCardSuccess = createAction(
+  '[Board Page] Create Card Success',
+  props<{ card: ICard }>(),
+);
+
+export const createCardFailure = createAction(
+  '[Board Page] Create Card Failure',
   props<{ error: any }>(),
 );

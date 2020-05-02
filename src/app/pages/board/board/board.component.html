@@ -1,4 +1,16 @@
 <div class="Board_Boundary">
-  <app-card *ngFor="let card of cards" [cardId]="card.id" [position]="card.position" [color]="card.color"
-    [locked]="card.lock" [text]="card.text" (saveCard)="updateCard($event)"></app-card>
+  <div class="Board_Actions">
+    <button mat-raised-button color="primary" class="AddButton">
+      <fa-icon icon="plus"></fa-icon><span>Add Card</span>
+    </button>
+  </div>
+  <!-- <ng-container *ngIf="loading$ | async; else loading"> -->
+  <ng-container *ngIf="cards$ | async as cards">
+    <app-card *ngFor="let card of cards" [cardId]="card.id" [position]="card.position" [color]="card.color"
+      [locked]="card.lock" [text]="card.text" (saveCard)="updateCard($event)"></app-card>
+  </ng-container>
+  <!-- </ng-container> -->
+  <ng-template #loading>
+    <p>読み込み中...</p>
+  </ng-template>
 </div>

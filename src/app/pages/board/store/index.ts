@@ -1,18 +1,9 @@
-import {
-  ActionReducer,
-  ActionReducerMap,
-  createFeatureSelector,
-  createSelector,
-  MetaReducer,
-} from '@ngrx/store';
 import { environment } from 'src/environments/environment';
 
-export const stateFeatureKey = 'state';
+import { MetaReducer } from '@ngrx/store';
 
-export interface State {}
+import * as fromBoard from './board.reducer';
 
-export const reducers: ActionReducerMap<State> = {};
-
-export const metaReducers: MetaReducer<State>[] = !environment.production
-  ? []
-  : [];
+export const metaReducers: MetaReducer<
+  fromBoard.State
+>[] = !environment.production ? [] : [];

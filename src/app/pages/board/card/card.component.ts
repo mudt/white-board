@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CdkDragEnd } from '@angular/cdk/drag-drop';
 import { ICard } from 'src/app/models/card';
-import { Validators, FormGroup, FormControl } from '@angular/forms';
+
+import { CdkDragEnd } from '@angular/cdk/drag-drop';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-card',
@@ -9,19 +10,19 @@ import { Validators, FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-  @Input() cardId: number;
+  @Input() cardId!: number;
   @Input() position = { x: 0, y: 0 };
-  @Input() color: string = null;
-  @Input() locked: boolean;
-  @Input() text: string;
+  @Input() color = 'white';
+  @Input() locked = false;
+  @Input() text = '';
 
   @Output() saveCard = new EventEmitter<ICard>();
 
-  card: ICard | null = null;
+  card!: ICard;
 
   editMode = false;
 
-  cardForm: FormGroup;
+  cardForm: FormGroup = new FormGroup({});
 
   constructor() {}
 
@@ -34,9 +35,10 @@ export class CardComponent implements OnInit {
       lock: this.locked,
     };
 
-    this.cardForm = new FormGroup({
-      text: new FormControl(this.card.text, Validators.required),
-    });
+    this.cardForm.addControl(
+      'text',
+      new FormControl(this.card.text, Validators.required),
+    );
   }
 
   startEdit() {
@@ -56,6 +58,10 @@ export class CardComponent implements OnInit {
   }
 
   get cardText() {
-    return this.cardForm.get('text');
+    const ctrl = this.cardForm.get('text');
+    if (ctrl === null) {
+      throw new Error('Not found form control!');
+    }
+    return ctrl;
   }
 }

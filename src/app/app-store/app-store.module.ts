@@ -1,10 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { StoreModule } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
 
-import { metaReducers, reducers } from './index';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+import { metaReducers, reducers } from './index';
 
 @NgModule({
   declarations: [],
@@ -18,6 +20,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
       },
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([]),
   ],
 })
 export class AppStoreModule {}

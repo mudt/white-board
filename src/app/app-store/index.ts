@@ -1,5 +1,6 @@
-import { ActionReducerMap, MetaReducer, ActionReducer } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
+
+import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
 
 export const appStoreFeatureKey = 'appStore';
 
