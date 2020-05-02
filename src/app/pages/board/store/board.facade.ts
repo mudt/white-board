@@ -21,7 +21,7 @@ export class BoardFacade {
     this.store.dispatch(BoardActions.loadCards());
   }
 
-  createCard(card: ICard) {
-    this.store.dispatch(BoardActions.createCard({ card }));
+  createCard() {
+    this.store.dispatch(BoardActions.createCard());
   }
 }

@@ -37,16 +37,6 @@ export class BoardComponent implements OnInit {
   }
 
   addCard() {
-    // const max = this.cards.reduce((p, c) => (p.id < c.id ? p : c));
-    // this.cards.push({
-    //   id: max.id + 1,
-    //   text: 'Add Card',
-    //   color: null,
-    //   lock: false,
-    //   position: {
-    //     x: 100,
-    //     y: 100,
-    //   },
-    // } as ICard);
+    this.boardService.createCard();
   }
 }

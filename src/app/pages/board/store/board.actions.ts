@@ -14,10 +14,7 @@ export const loadCardsFailure = createAction(
   props<{ error: any }>(),
 );
 
-export const createCard = createAction(
-  '[Board Page] Create Card',
-  props<{ card: Partial<ICard> }>(),
-);
+export const createCard = createAction('[Board Page] Create Card');
 
 export const createCardSuccess = createAction(
   '[Board Page] Create Card Success',

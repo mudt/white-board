@@ -30,4 +30,17 @@ export class BoardService {
 
     return of(cards);
   }
+
+  createCard() {
+    return of({
+      id: 3,
+      text: 'Write label',
+      position: {
+        x: Math.floor(Math.random() * (200 - 80) + 80),
+        y: Math.floor(Math.random() * (200 - 80) + 80),
+      },
+      color: 'white',
+      lock: false,
+    });
+  }
 }

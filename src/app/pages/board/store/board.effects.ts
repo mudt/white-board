@@ -22,4 +22,16 @@ export class BoardEffects {
       ),
     ),
   );
+
+  createCard$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BoardActions.createCard),
+      switchMap(() =>
+        this.boardService.createCard().pipe(
+          map((card) => BoardActions.createCardSuccess({ card })),
+          catchError((error) => of(BoardActions.createCardFailure({ error }))),
+        ),
+      ),
+    ),
+  );
 }
