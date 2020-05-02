@@ -25,3 +25,17 @@ export const createCardFailure = createAction(
   '[Board Page] Create Card Failure',
   props<{ error: any }>(),
 );
+
+export const updateCard = createAction(
+  '[Board Page] Update Card',
+  props<{ card: ICard }>(),
+);
+
+export const updateCardSuccess = createAction(
+  '[Board Page] Update Card Success',
+);
+
+export const updateCardFailure = createAction(
+  '[Board Page] Update Card Failure',
+  props<{ error: any }>(),
+);

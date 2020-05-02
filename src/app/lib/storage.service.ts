@@ -16,8 +16,8 @@ export class StorageService {
     localStorage.setItem(this.key(key), JSON.stringify(val));
   }
 
-  load(key: string) {
+  load<T>(key: string) {
     const data = localStorage.getItem(this.key(key));
-    return data ? JSON.parse(data) : '';
+    return data ? (JSON.parse(data) as T) : null;
   }
 }

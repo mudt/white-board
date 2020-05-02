@@ -36,6 +36,20 @@ const boardReducer = createReducer(
   })),
   on(BoardActions.createCardFailure, (state, { error }) => ({
     ...state,
+    loading: false,
+    error,
+  })),
+  on(BoardActions.updateCard, (state) => ({
+    ...state,
+    loading: true,
+  })),
+  on(BoardActions.updateCardSuccess, (state) => ({
+    ...state,
+    loading: false,
+  })),
+  on(BoardActions.updateCardFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
     error,
   })),
 );

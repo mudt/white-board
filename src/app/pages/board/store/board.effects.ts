@@ -34,4 +34,16 @@ export class BoardEffects {
       ),
     ),
   );
+
+  updateCard$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BoardActions.updateCard),
+      switchMap((data) =>
+        this.boardService.updateCard(data.card).pipe(
+          map((_) => BoardActions.updateCardSuccess()),
+          catchError((error) => of(BoardActions.updateCardFailure({ error }))),
+        ),
+      ),
+    ),
+  );
 }

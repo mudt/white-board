@@ -2,37 +2,21 @@ import { Observable, of } from 'rxjs';
 
 import { Injectable } from '@angular/core';
 
+import { StorageService } from '../lib/storage.service';
 import { ICard } from '../models/card';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BoardService {
-  constructor() {}
+  constructor(private storage: StorageService) {}
 
   fetchCards(): Observable<ICard[]> {
-    const cards = [
-      {
-        id: 1,
-        text: 'aiu',
-        position: { x: 100, y: 200 },
-        color: 'white',
-        lock: false,
-      },
-      {
-        id: 2,
-        text: 'cccc',
-        position: { x: 20, y: 400 },
-        color: 'white',
-        lock: false,
-      },
-    ] as ICard[];
-
-    return of(cards);
+    return of(this.getCards());
   }
 
   createCard() {
-    return of({
+    const card = {
       id: 3,
       text: 'Write label',
       position: {
@@ -41,6 +25,32 @@ export class BoardService {
       },
       color: 'white',
       lock: false,
-    });
+    };
+    const cards = this.getCards();
+    cards.push(card);
+    this.storage.save('cards', cards);
+
+    return of(card);
+  }
+
+  updateCard(card: any) {
+    let savedCard = this.getCards();
+    if (savedCard) {
+      savedCard = savedCard.map((c: ICard) => {
+        if (c.id === card.id) {
+          return card;
+        }
+        return c;
+      });
+    } else {
+      savedCard = [card];
+    }
+    this.storage.save('cards', savedCard);
+    return of(savedCard);
+  }
+
+  private getCards(): ICard[] {
+    const cards = this.storage.load<ICard[]>('cards');
+    return cards ? cards : [];
   }
 }

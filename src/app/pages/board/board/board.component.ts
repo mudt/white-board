@@ -14,10 +14,7 @@ export class BoardComponent implements OnInit {
   cards$ = this.boardService.cards$;
   loading$ = this.boardService.loading$;
 
-  constructor(
-    private boardService: BoardFacade,
-    private storage: StorageService,
-  ) {}
+  constructor(private boardService: BoardFacade) {}
 
   ngOnInit(): void {
     this.boardService.loadCards();
@@ -27,13 +24,7 @@ export class BoardComponent implements OnInit {
   }
 
   updateCard(card: ICard) {
-    // this.cards = this.cards.map((c) => {
-    //   if (c.id === card.id) {
-    //     return card;
-    //   }
-    //   return c;
-    // });
-    // this.storage.save('cards', this.cards);
+    this.boardService.updateCard(card);
   }
 
   addCard() {
