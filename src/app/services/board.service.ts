@@ -4,62 +4,30 @@ import { Injectable } from '@angular/core';
 
 import { StorageService } from '../lib/storage.service';
 import { ICard } from '../models/card';
+import { ApiMockCardService } from './api-mock-card.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BoardService {
-  constructor(private storage: StorageService) {}
+  constructor(private cardApi: ApiMockCardService) {}
 
   fetchCards(): Observable<ICard[]> {
-    return of(this.getCards());
+    return of(this.cardApi.fetchAll());
   }
 
-  createCard() {
-    const card = {
-      id: 3,
-      text: 'Write label',
-      position: {
-        x: Math.floor(Math.random() * (200 - 80) + 80),
-        y: Math.floor(Math.random() * (200 - 80) + 80),
-      },
-      color: 'white',
-      lock: false,
-    };
-    const cards = this.getCards();
-    cards.push(card);
-    this.storage.save('cards', cards);
-
+  createCard(): Observable<ICard> {
+    const card = this.cardApi.create();
     return of(card);
   }
 
-  updateCard(card: ICard) {
-    let savedCard = this.getCards();
-    if (savedCard) {
-      savedCard = savedCard.map((c: ICard) => {
-        if (c.id === card.id) {
-          return card;
-        }
-        return c;
-      });
-    } else {
-      savedCard = [card];
-    }
-    this.storage.save('cards', savedCard);
-    return of(savedCard);
-  }
-
-  deleteCard(id: number): Observable<boolean> {
-    let savedCard = this.getCards();
-    if (savedCard) {
-      savedCard = savedCard.filter((c: ICard) => c.id !== id);
-      this.storage.save('cards', savedCard);
-    }
+  updateCard(card: ICard): Observable<boolean> {
+    this.cardApi.update(card);
     return of(true);
   }
 
-  private getCards(): ICard[] {
-    const cards = this.storage.load<ICard[]>('cards');
-    return cards ? cards : [];
+  deleteCard(id: number): Observable<boolean> {
+    this.cardApi.delete(id);
+    return of(true);
   }
 }

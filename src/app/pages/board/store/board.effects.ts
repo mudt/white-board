@@ -40,7 +40,7 @@ export class BoardEffects {
       ofType(BoardActions.updateCard),
       switchMap(({ card }) =>
         this.boardService.updateCard(card).pipe(
-          map((_) => BoardActions.updateCardSuccess({ card })),
+          map(() => BoardActions.updateCardSuccess({ card })),
           catchError((error) => of(BoardActions.updateCardFailure({ error }))),
         ),
       ),
