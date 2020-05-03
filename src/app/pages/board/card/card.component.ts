@@ -3,7 +3,12 @@ import { ColorService } from 'src/app/services/color.service';
 
 import { CdkDragEnd } from '@angular/cdk/drag-drop';
 import {
-    Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 

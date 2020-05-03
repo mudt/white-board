@@ -1,12 +1,26 @@
-<mat-card class="Card" [ngClass]="{'isDark': darkMode}" cdkDrag [cdkDragFreeDragPosition]="card.position"
-  (cdkDragEnded)="dragEnd($event)" cdkDragBoundary=".Board_Boundary" [ngStyle]="{'background-color': card.color}">
+<mat-card
+  class="Card"
+  [ngClass]="{ isDark: darkMode }"
+  cdkDrag
+  [cdkDragFreeDragPosition]="card.position"
+  (cdkDragEnded)="dragEnd($event)"
+  cdkDragBoundary=".Board_Boundary"
+  [ngStyle]="{ 'background-color': card.color }"
+>
   <div class="Card_Header">
     <div class="Card_Trash" (click)="delete(card.id)">
       <fa-icon icon="trash"></fa-icon>
     </div>
     <div class="Card_Color">
-      <span class="ColorPicker" [ngClass]="{'isDark': darkMode}" [(colorPicker)]="color" [style.background]="color"
-        [cpOutputFormat]="'hex'" [cpDisableInput]="card.lock" (colorPickerSelect)="changeColor($event)"></span>
+      <span
+        class="ColorPicker"
+        [ngClass]="{ isDark: darkMode }"
+        [(colorPicker)]="color"
+        [style.background]="color"
+        [cpOutputFormat]="'hex'"
+        [cpDisableInput]="card.lock"
+        (colorPickerSelect)="changeColor($event)"
+      ></span>
     </div>
     <div class="Card_Handle" cdkDragHandle>
       <fa-icon icon="arrows-alt"></fa-icon>
@@ -16,9 +30,20 @@
     <ng-container *ngIf="editMode; else noEdit">
       <form [formGroup]="cardForm">
         <div matFormField appearance="fill">
-          <textarea id="text" matInput (blur)="saveText()" formControlName="text" autofocus required cols="21" rows="8"
-            minlength="500"></textarea>
-          <mat-error *ngIf="cardText.errors?.required">内容は必須です</mat-error>
+          <textarea
+            id="text"
+            matInput
+            (blur)="saveText()"
+            formControlName="text"
+            autofocus
+            required
+            cols="21"
+            rows="8"
+            minlength="500"
+          ></textarea>
+          <mat-error *ngIf="cardText.errors?.required"
+            >内容は必須です</mat-error
+          >
         </div>
       </form>
     </ng-container>

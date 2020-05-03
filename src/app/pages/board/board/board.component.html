@@ -1,13 +1,26 @@
 <div class="Board_Boundary">
   <div class="Board_Actions">
-    <button mat-raised-button color="primary" class="AddButton" (click)="addCard()">
+    <button
+      mat-raised-button
+      color="primary"
+      class="AddButton"
+      (click)="addCard()"
+    >
       <fa-icon icon="plus"></fa-icon><span>Add Card</span>
     </button>
   </div>
   <!-- <ng-container *ngIf="loading$ | async; else loading"> -->
   <ng-container *ngIf="cards$ | async as cards">
-    <app-card *ngFor="let card of cards" [cardId]="card.id" [position]="card.position" [color]="card.color"
-      [locked]="card.lock" [text]="card.text" (saveCard)="updateCard($event)" (deleteCard)="deleteCard($event)">
+    <app-card
+      *ngFor="let card of cards"
+      [cardId]="card.id"
+      [position]="card.position"
+      [color]="card.color"
+      [locked]="card.lock"
+      [text]="card.text"
+      (saveCard)="updateCard($event)"
+      (deleteCard)="deleteCard($event)"
+    >
     </app-card>
   </ng-container>
   <!-- </ng-container> -->
