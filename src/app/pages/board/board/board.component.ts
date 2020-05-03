@@ -1,4 +1,3 @@
-import { StorageService } from 'src/app/lib/storage.service';
 import { ICard } from 'src/app/models/card';
 
 import { Component, OnInit } from '@angular/core';
@@ -18,9 +17,6 @@ export class BoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.boardService.loadCards();
-
-    this.loading$.subscribe((v) => console.log('loading', v));
-    this.cards$.subscribe((v) => console.log('cards', v));
   }
 
   updateCard(card: ICard) {
