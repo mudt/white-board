@@ -17,6 +17,7 @@ export class CardComponent implements OnInit {
   @Input() text = '';
 
   @Output() saveCard = new EventEmitter<ICard>();
+  @Output() deleteCard = new EventEmitter<number>();
 
   card!: ICard;
 
@@ -55,6 +56,12 @@ export class CardComponent implements OnInit {
     const position = ev.source.getFreeDragPosition();
     this.card = { ...this.card, position: { ...position } };
     this.saveCard.emit(this.card);
+  }
+
+  delete(id: number) {
+    if (window.confirm('削除してもよろしいですか？')) {
+      this.deleteCard.emit(id);
+    }
   }
 
   get cardText() {

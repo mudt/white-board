@@ -1,10 +1,13 @@
 <mat-card class="Card" cdkDrag [cdkDragFreeDragPosition]="card.position" (cdkDragEnded)="dragEnd($event)"
   cdkDragBoundary=".Board_Boundary">
-  <mat-card-header class="Card_Header">
-    <div class="Card-handle" cdkDragHandle>
+  <div class="Card_Header">
+    <div class="Card_Trash" (click)="delete(card.id)">
+      <fa-icon icon="trash"></fa-icon>
+    </div>
+    <div class="Card_Handle" cdkDragHandle>
       <fa-icon icon="arrows-alt"></fa-icon>
     </div>
-  </mat-card-header>
+  </div>
   <mat-card-content class="Card_Contents">
     <ng-container *ngIf="editMode; else noEdit">
       <form [formGroup]="cardForm">

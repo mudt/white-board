@@ -9,14 +9,21 @@
 
   &_Header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0 8px;
   }
 
-  &-handle {
-    color: #ccc;
+  &_Trash {
+    flex: 0 0 24px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  &_Handle {
+    flex: 0 0 24px;
     cursor: move;
-    width: 24px;
-    height: 24px;
+    text-align: center;
   }
 
   textarea {

@@ -46,4 +46,16 @@ export class BoardEffects {
       ),
     ),
   );
+
+  deleteCard$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BoardActions.deleteCard),
+      switchMap(({ id }) =>
+        this.boardService.deleteCard(id).pipe(
+          map(() => BoardActions.deleteCardSuccess({ id })),
+          catchError((error) => of(BoardActions.deleteCardFailure({ error }))),
+        ),
+      ),
+    ),
+  );
 }

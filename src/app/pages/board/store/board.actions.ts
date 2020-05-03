@@ -39,3 +39,18 @@ export const updateCardFailure = createAction(
   '[Board Page] Update Card Failure',
   props<{ error: any }>(),
 );
+
+export const deleteCard = createAction(
+  '[Board Page] Delete Card',
+  props<{ id: number }>(),
+);
+
+export const deleteCardSuccess = createAction(
+  '[Board Page] Delete Card Success',
+  props<{ id: number }>(),
+);
+
+export const deleteCardFailure = createAction(
+  '[Board Page] Delete Card Failure',
+  props<{ error: any }>(),
+);

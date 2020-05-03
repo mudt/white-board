@@ -30,4 +30,8 @@ export class BoardComponent implements OnInit {
   addCard() {
     this.boardService.createCard();
   }
+
+  deleteCard(id: number) {
+    this.boardService.deleteCard(id);
+  }
 }

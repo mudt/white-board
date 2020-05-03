@@ -28,4 +28,8 @@ export class BoardFacade {
   updateCard(card: ICard) {
     this.store.dispatch(BoardActions.updateCard({ card }));
   }
+
+  deleteCard(id: number) {
+    this.store.dispatch(BoardActions.deleteCard({ id }));
+  }
 }

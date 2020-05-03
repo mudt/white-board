@@ -49,6 +49,15 @@ export class BoardService {
     return of(savedCard);
   }
 
+  deleteCard(id: number): Observable<boolean> {
+    let savedCard = this.getCards();
+    if (savedCard) {
+      savedCard = savedCard.filter((c: ICard) => c.id !== id);
+      this.storage.save('cards', savedCard);
+    }
+    return of(true);
+  }
+
   private getCards(): ICard[] {
     const cards = this.storage.load<ICard[]>('cards');
     return cards ? cards : [];

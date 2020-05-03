@@ -7,7 +7,8 @@
   <!-- <ng-container *ngIf="loading$ | async; else loading"> -->
   <ng-container *ngIf="cards$ | async as cards">
     <app-card *ngFor="let card of cards" [cardId]="card.id" [position]="card.position" [color]="card.color"
-      [locked]="card.lock" [text]="card.text" (saveCard)="updateCard($event)"></app-card>
+      [locked]="card.lock" [text]="card.text" (saveCard)="updateCard($event)" (deleteCard)="deleteCard($event)">
+    </app-card>
   </ng-container>
   <!-- </ng-container> -->
   <ng-template #loading>

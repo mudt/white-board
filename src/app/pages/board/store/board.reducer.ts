@@ -52,6 +52,20 @@ const boardReducer = createReducer(
     loading: false,
     error,
   })),
+  on(BoardActions.deleteCard, (state) => ({
+    ...state,
+    loading: true,
+  })),
+  on(BoardActions.deleteCardSuccess, (state, { id }) => ({
+    ...state,
+    loading: false,
+    cards: state.cards.filter((card) => card.id !== id),
+  })),
+  on(BoardActions.deleteCardFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+  })),
 );
 
 export function reducer(state: State | undefined, action: Action) {
