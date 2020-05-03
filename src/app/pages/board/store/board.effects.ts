@@ -38,9 +38,9 @@ export class BoardEffects {
   updateCard$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BoardActions.updateCard),
-      switchMap((data) =>
-        this.boardService.updateCard(data.card).pipe(
-          map((_) => BoardActions.updateCardSuccess()),
+      switchMap(({ card }) =>
+        this.boardService.updateCard(card).pipe(
+          map((_) => BoardActions.updateCardSuccess({ card })),
           catchError((error) => of(BoardActions.updateCardFailure({ error }))),
         ),
       ),

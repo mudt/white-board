@@ -33,7 +33,7 @@ export class BoardService {
     return of(card);
   }
 
-  updateCard(card: any) {
+  updateCard(card: ICard) {
     let savedCard = this.getCards();
     if (savedCard) {
       savedCard = savedCard.map((c: ICard) => {

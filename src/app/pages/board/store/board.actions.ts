@@ -33,6 +33,7 @@ export const updateCard = createAction(
 
 export const updateCardSuccess = createAction(
   '[Board Page] Update Card Success',
+  props<{ card: ICard }>(),
 );
 
 export const updateCardFailure = createAction(

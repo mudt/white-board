@@ -43,9 +43,10 @@ const boardReducer = createReducer(
     ...state,
     loading: true,
   })),
-  on(BoardActions.updateCardSuccess, (state) => ({
+  on(BoardActions.updateCardSuccess, (state, { card }) => ({
     ...state,
     loading: false,
+    cards: state.cards.map((c: ICard) => (c.id === card.id ? card : c)),
   })),
   on(BoardActions.updateCardFailure, (state, { error }) => ({
     ...state,
