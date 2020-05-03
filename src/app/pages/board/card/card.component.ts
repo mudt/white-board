@@ -1,7 +1,9 @@
 import { ICard } from 'src/app/models/card';
 
 import { CdkDragEnd } from '@angular/cdk/drag-drop';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+    Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -38,7 +40,10 @@ export class CardComponent implements OnInit {
 
     this.cardForm.addControl(
       'text',
-      new FormControl(this.card.text, Validators.required),
+      new FormControl(this.card.text, [
+        Validators.required,
+        Validators.maxLength(500),
+      ]),
     );
   }
 
@@ -47,6 +52,10 @@ export class CardComponent implements OnInit {
   }
 
   saveText() {
+    const value = this.cardForm.get('text')?.value;
+    if (value === '') {
+      return false;
+    }
     this.card = { ...this.card, ...this.cardForm.value };
     this.editMode = false;
     this.saveCard.emit(this.card);

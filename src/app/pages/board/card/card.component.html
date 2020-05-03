@@ -12,7 +12,8 @@
     <ng-container *ngIf="editMode; else noEdit">
       <form [formGroup]="cardForm">
         <div matFormField appearance="fill">
-          <textarea id="text" matInput (blur)="saveText()" autofocus formControlName="text" required></textarea>
+          <textarea id="text" matInput (blur)="saveText()" formControlName="text" autofocus required cols="21" rows="8"
+            minlength="500"></textarea>
           <mat-error *ngIf="cardText.errors?.required">内容は必須です</mat-error>
         </div>
       </form>
