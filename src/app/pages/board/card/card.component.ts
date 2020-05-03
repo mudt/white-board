@@ -1,4 +1,5 @@
 import { ICard } from 'src/app/models/card';
+import { ColorService } from 'src/app/services/color.service';
 
 import { CdkDragEnd } from '@angular/cdk/drag-drop';
 import {
@@ -27,7 +28,9 @@ export class CardComponent implements OnInit {
 
   cardForm: FormGroup = new FormGroup({});
 
-  constructor() {}
+  darkMode = false;
+
+  constructor(private colorService: ColorService) {}
 
   ngOnInit(): void {
     this.card = {
@@ -45,10 +48,23 @@ export class CardComponent implements OnInit {
         Validators.maxLength(500),
       ]),
     );
+    this.cardForm.addControl(
+      'color',
+      new FormControl(this.card.color, Validators.required),
+    );
+
+    this.darkMode = this.colorService.isDark(this.card.color);
   }
 
   startEdit() {
     this.editMode = true;
+  }
+
+  changeColor(color: string) {
+    this.darkMode = this.colorService.isDark(color);
+    // this.card.color = color;
+    const card = { ...this.card, color };
+    this.saveCard.emit(card);
   }
 
   saveText() {
@@ -56,9 +72,10 @@ export class CardComponent implements OnInit {
     if (value === '') {
       return false;
     }
-    this.card = { ...this.card, ...this.cardForm.value };
+    // this.card = { ...this.card, ...this.cardForm.value };
+    const card = { ...this.card, ...this.cardForm.value };
+    this.saveCard.emit(card);
     this.editMode = false;
-    this.saveCard.emit(this.card);
   }
 
   dragEnd(ev: CdkDragEnd) {

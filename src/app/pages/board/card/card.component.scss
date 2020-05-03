@@ -1,17 +1,19 @@
 .Card {
   width: 150px;
   height: 150px;
-  border: 1px solid #bbbbbb;
-  background-color: #ffffff;
+  background-color: #666666;
   padding: 8px;
   color: #666666;
   position: absolute;
 
+  &.isDark {
+    color: #ffffff;
+  }
+
   &_Header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 4px 0 8px;
+    padding: 2px 0 8px;
   }
 
   &_Trash {
@@ -26,10 +28,27 @@
     text-align: center;
   }
 
+  &_Color {
+    flex: 0 0 24px;
+    text-align: center;
+  }
+
+  .ColorPicker {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #666;
+    cursor: pointer;
+    display: inline-block;
+
+    &.isDark {
+      border-color: #ffffff;
+    }
+  }
+
   textarea {
     &:invalid {
       border: 1px solid red;
     }
   }
 }
-

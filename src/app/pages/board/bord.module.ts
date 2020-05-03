@@ -1,3 +1,4 @@
+import { ColorPickerModule } from 'ngx-color-picker';
 import { IconFontAwasomeModule } from 'src/app/shared/icon-font-awasome/icon-font-awasome.module';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 
@@ -19,6 +20,7 @@ import { BoardStoreModule } from './store/board-store.module';
     BoardRoutingRoutingModule,
     IconFontAwasomeModule,
     BoardStoreModule,
+    ColorPickerModule,
   ],
 })
 export class BordModule {}
