@@ -47,7 +47,8 @@ npm run start
 
 ## 学び
 
-- NgRx [[URL](https://ngrx.io/)]
+- NgRx [[URL](https://ngrx.io)]
 - angular/material の DragAndDrop [[URL](https://material.angular.io/cdk/drag-drop/overview)]
 - FontawesomeのAngular対応 [[URL](https://fontawesome.com/how-to-use/on-the-web/using-with/angular)]
+- CSS-Element-Queriesを使ったリサイズの監視 [[URL](https://github.com/marcj/css-element-queries)]
 - RGB(hex)からHSLへの変換
