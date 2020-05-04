@@ -119,6 +119,6 @@ export class ColorService {
     } else if (230 <= hue && hue <= 260) {
       return true;
     }
-    return lightness <= 30;
+    return lightness <= 30 || saturation >= 50;
   }
 }
