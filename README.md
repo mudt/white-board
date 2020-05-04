@@ -1,27 +1,53 @@
-# StayHomeBoard
+# WhiteBoard
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
+ホワイトボード。
 
-## Development server
+[元ネタ](https://qiita.com/numanomanu/items/e0ace008565164c17b75#step2-drag-on-drop-%E3%81%A7%E4%BD%8D%E7%BD%AE%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B) を見て作ってみようと思った。
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+元はReactでしたが、Angularで作りなおしました。
+デモとしてホスティングしようと思いましたが面倒なので放置。
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## できる事
 
-## Build
+- 付箋の追加
+- 付箋内容の編集
+- 付箋の削除
+- 付箋の色変更
+- 付箋の移動
+- 付箋のリサイズ
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+保存は簡易的に `localStorage` にしています。
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## やってみたかったけどやめたこと
 
-## Running end-to-end tests
+- Firebaseの `realtime database` を使った複数人での編集対応
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+## ビルド
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+本プロジェクトを `clone` して次のコマンドでローカル上で動かせます。
+
+```zsh
+cd [workspace] && npm install
+npm run start
+```
+
+「Compiled successfully.」が表示されたら、ブラウザで `http://localhost:4200/` にアクセスしてください。
+
+確認はChromeでのみ行なっています。
+
+
+## 必要条件
+
+- Node 10.13 or later  
+  私は `12.14.0` にて開発しました。
+
+
+## 学び
+
+- NgRx [[URL](https://ngrx.io/)]
+- angular/material の DragAndDrop [[URL](https://material.angular.io/cdk/drag-drop/overview)]
+- FontawesomeのAngular対応 [[URL](https://fontawesome.com/how-to-use/on-the-web/using-with/angular)]
+- RGB(hex)からHSLへの変換
