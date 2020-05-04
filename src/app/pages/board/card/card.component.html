@@ -2,17 +2,18 @@
   (cdkDragEnded)="dragEnd($event)" cdkDragBoundary=".Board_Boundary"
   [ngStyle]="{ 'background-color': card.color, 'width': card.size.width + 'px', 'height': card.size.height + 'px' }"
   [appElementResize]="card.size" (resizeEnded)="resize($event)">
-  <div class="Card_Header">
-    <div class="Card_Trash" (click)="delete(card.id)">
-      <fa-icon icon="trash"></fa-icon>
+  <div class="Card_Actions">
+    <div class="Card_Handle" cdkDragHandle>
+      <fa-icon icon="arrows-alt"></fa-icon>
     </div>
     <div class="Card_Color">
       <span class="ColorPicker" [ngClass]="{ isDark: darkMode }" [colorPicker]="card.color"
         [style.background]="card.color" [cpOutputFormat]="'hex'" [cpDisableInput]="card.lock"
         [cpUseRootViewContainer]="true" (colorPickerSelect)="changeColor($event)"></span>
     </div>
-    <div class="Card_Handle" cdkDragHandle>
-      <fa-icon icon="arrows-alt"></fa-icon>
+    <div class="Card_ActionSpace"></div>
+    <div class="Card_Trash" (click)="delete(card.id)">
+      <fa-icon icon="trash"></fa-icon>
     </div>
   </div>
   <mat-card-content class="Card_Contents">

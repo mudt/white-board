@@ -5,36 +5,41 @@
   color: #666666;
   position: absolute;
   padding: 0;
+  display: flex;
+  flex-direction: row;
 
   &.isDark {
     color: #ffffff;
   }
 
-  &_Header {
+  &_Actions {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     padding: 8px;
   }
 
-  &_Contents {
-    padding: 8px;
+  &_ActionSpace {
+    flex: 1 0 auto;
   }
 
   &_Trash {
     flex: 0 0 24px;
     cursor: pointer;
-    text-align: center;
   }
 
   &_Handle {
     flex: 0 0 24px;
     cursor: move;
-    text-align: center;
   }
 
   &_Color {
     flex: 0 0 24px;
-    text-align: center;
+  }
+
+  &_Contents {
+    padding: 8px;
   }
 
   .ColorPicker {
