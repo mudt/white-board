@@ -1,4 +1,7 @@
 import { ColorPickerModule } from 'ngx-color-picker';
+import {
+    ElementResizeDirective
+} from 'src/app/shared/directives/element-resize/element-resize.directive';
 import { IconFontAwasomeModule } from 'src/app/shared/icon-font-awasome/icon-font-awasome.module';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 
@@ -12,7 +15,7 @@ import { CardComponent } from './card/card.component';
 import { BoardStoreModule } from './store/board-store.module';
 
 @NgModule({
-  declarations: [BoardComponent, CardComponent],
+  declarations: [BoardComponent, CardComponent, ElementResizeDirective],
   imports: [
     CommonModule,
     ReactiveFormsModule,

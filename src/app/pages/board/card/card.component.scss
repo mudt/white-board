@@ -2,9 +2,9 @@
   width: 150px;
   height: 150px;
   background-color: #666666;
-  padding: 8px;
   color: #666666;
   position: absolute;
+  padding: 0;
 
   &.isDark {
     color: #ffffff;
@@ -13,7 +13,11 @@
   &_Header {
     display: flex;
     justify-content: space-between;
-    padding: 2px 0 8px;
+    padding: 8px;
+  }
+
+  &_Contents {
+    padding: 8px;
   }
 
   &_Trash {
@@ -51,4 +55,11 @@
       border: 1px solid red;
     }
   }
+}
+
+.ElementResize {
+  resize: both;
+  overflow: auto;
+  min-width: 160px;
+  min-height: 160px;
 }

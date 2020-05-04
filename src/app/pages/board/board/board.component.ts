@@ -1,6 +1,6 @@
 import { ICard } from 'src/app/models/card';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 
 import { BoardFacade } from '../store/board.facade';
 
@@ -13,7 +13,10 @@ export class BoardComponent implements OnInit {
   cards$ = this.boardService.cards$;
   loading$ = this.boardService.loading$;
 
-  constructor(private boardService: BoardFacade) {}
+  constructor(
+    private boardService: BoardFacade,
+    public vcRef: ViewContainerRef,
+  ) {}
 
   ngOnInit(): void {
     this.boardService.loadCards();

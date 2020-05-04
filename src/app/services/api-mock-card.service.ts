@@ -34,6 +34,10 @@ export class ApiMockCardService {
         x: Math.floor(Math.random() * (200 - 80) + 80),
         y: Math.floor(Math.random() * (200 - 80) + 80),
       },
+      size: {
+        width: 160,
+        height: 160,
+      },
       color: '#ffffff',
       lock: false,
     };
