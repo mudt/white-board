@@ -6,10 +6,14 @@
     <div class="Card_Handle" cdkDragHandle>
       <fa-icon icon="arrows-alt"></fa-icon>
     </div>
+    <div class="Card_Edit" (click)="startEdit()">
+      <fa-icon icon="pen"></fa-icon>
+    </div>
     <div class="Card_Color">
-      <span class="ColorPicker" [ngClass]="{ isDark: darkMode }" [colorPicker]="card.color"
-        [style.background]="card.color" [cpOutputFormat]="'hex'" [cpDisableInput]="card.lock"
-        [cpUseRootViewContainer]="true" (colorPickerSelect)="changeColor($event)"></span>
+      <fa-icon icon="palette" [colorPicker]="card.color" [style.background]="card.color" [cpOutputFormat]="'hex'"
+        [cpDisableInput]="card.lock" [cpUseRootViewContainer]="true" (colorPickerSelect)="changeColor($event)">
+        <span [ngClass]="{ isDark: darkMode }"></span>
+      </fa-icon>
     </div>
     <div class="Card_ActionSpace"></div>
     <div class="Card_Trash" (click)="delete(card.id)">

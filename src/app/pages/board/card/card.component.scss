@@ -18,6 +18,7 @@
     justify-content: flex-start;
     align-items: center;
     padding: 8px;
+    font-size: 18px;
   }
 
   &_ActionSpace {
@@ -25,34 +26,29 @@
   }
 
   &_Trash {
-    flex: 0 0 24px;
+    flex: 0 0 30px;
     cursor: pointer;
   }
 
   &_Handle {
-    flex: 0 0 24px;
+    flex: 0 0 30px;
     cursor: move;
   }
 
+  &_Edit {
+    flex: 0 0 30px;
+    cursor: pointer;
+  }
+
   &_Color {
-    flex: 0 0 24px;
+    flex: 0 0 30px;
+    cursor: pointer;
   }
 
   &_Contents {
+    width: 100%;
     padding: 8px;
-  }
-
-  .ColorPicker {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    border: 1px solid #666;
-    cursor: pointer;
-    display: inline-block;
-
-    &.isDark {
-      border-color: #ffffff;
-    }
+    margin: 0;
   }
 
   textarea {
