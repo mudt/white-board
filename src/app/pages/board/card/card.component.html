@@ -1,7 +1,18 @@
-<mat-card class="Card ElementResize" [ngClass]="{ isDark: darkMode }" cdkDrag [cdkDragFreeDragPosition]="card.position"
-  (cdkDragEnded)="dragEnd($event)" cdkDragBoundary=".Board_Boundary"
-  [ngStyle]="{ 'background-color': card.color, 'width': card.size.width + 'px', 'height': card.size.height + 'px' }"
-  [appElementResize]="card.size" (resizeEnded)="resize($event)">
+<mat-card
+  class="Card ElementResize"
+  [ngClass]="{ isDark: darkMode }"
+  cdkDrag
+  [cdkDragFreeDragPosition]="card.position"
+  (cdkDragEnded)="dragEnd($event)"
+  cdkDragBoundary=".Board_Boundary"
+  [ngStyle]="{
+    'background-color': card.color,
+    width: card.size.width + 'px',
+    height: card.size.height + 'px'
+  }"
+  [appElementResize]="card.size"
+  (resizeEnded)="resize($event)"
+>
   <div class="Card_Actions">
     <div class="Card_Handle" cdkDragHandle>
       <fa-icon icon="arrows-alt"></fa-icon>
@@ -10,8 +21,15 @@
       <fa-icon icon="pen"></fa-icon>
     </div>
     <div class="Card_Color">
-      <fa-icon icon="palette" [colorPicker]="card.color" [style.background]="card.color" [cpOutputFormat]="'hex'"
-        [cpDisableInput]="card.lock" [cpUseRootViewContainer]="true" (colorPickerSelect)="changeColor($event)">
+      <fa-icon
+        icon="palette"
+        [colorPicker]="card.color"
+        [style.background]="card.color"
+        [cpOutputFormat]="'hex'"
+        [cpDisableInput]="card.lock"
+        [cpUseRootViewContainer]="true"
+        (colorPickerSelect)="changeColor($event)"
+      >
         <span [ngClass]="{ isDark: darkMode }"></span>
       </fa-icon>
     </div>
@@ -24,9 +42,20 @@
     <ng-container *ngIf="editMode; else noEdit">
       <form [formGroup]="cardForm">
         <div matFormField appearance="fill">
-          <textarea id="text" matInput (blur)="saveText()" formControlName="text" autofocus required cols="21" rows="8"
-            minlength="500"></textarea>
-          <mat-error *ngIf="cardText.errors?.required">内容は必須です</mat-error>
+          <textarea
+            id="text"
+            matInput
+            (blur)="saveText()"
+            formControlName="text"
+            autofocus
+            required
+            cols="21"
+            rows="8"
+            minlength="500"
+          ></textarea>
+          <mat-error *ngIf="cardText.errors?.required"
+            >内容は必須です</mat-error
+          >
         </div>
       </form>
     </ng-container>

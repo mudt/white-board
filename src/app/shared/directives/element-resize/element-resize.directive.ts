@@ -1,7 +1,14 @@
 import { ResizeSensor } from 'css-element-queries';
 
 import {
-    Directive, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output
+  Directive,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
 } from '@angular/core';
 
 import { ElementResize } from './element-resize';

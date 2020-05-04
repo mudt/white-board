@@ -3,7 +3,14 @@ import { ColorService } from 'src/app/services/color.service';
 import { ElementResize } from 'src/app/shared/directives/element-resize/element-resize';
 
 import { CdkDragEnd } from '@angular/cdk/drag-drop';
-import { Component, EventEmitter, Input, OnInit, Output, ViewContainerRef } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewContainerRef,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
